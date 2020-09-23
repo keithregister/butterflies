@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0" tests="4" failures="1">
+  <testsuite name="Root Suite" timestamp="2019-09-10T00:31:51" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="list view test" timestamp="2019-09-10T00:31:51" tests="4" file="/Users/gopal.jayaraman/learning/hackerrank/list-view-3h88d1ce91k/test/test.js" failures="1" time="0">
+    <testcase name="list view test &quot;before all&quot; hook" time="0" classname="&quot;before all&quot; hook">
+      <failure message="session not created: Chrome version must be between 71 and 75
+  (Driver info: chromedriver=2.46.628411 (3324f4c8be9ff2f70a05a30ebc72ffb013e1a71e),platform=Mac OS X 10.14.6 x86_64)" type="SessionNotCreatedError"><![CDATA[SessionNotCreatedError: session not created: Chrome version must be between 71 and 75
+  (Driver info: chromedriver=2.46.628411 (3324f4c8be9ff2f70a05a30ebc72ffb013e1a71e),platform=Mac OS X 10.14.6 x86_64)
+    at Object.checkLegacyResponse (node_modules/selenium-webdriver/lib/error.js:546:15)
+    at parseHttpResponse (node_modules/selenium-webdriver/lib/http.js:509:13)
+    at doSend.then.response (node_modules/selenium-webdriver/lib/http.js:441:30)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+From: Task: WebDriver.createSession()
+    at Function.createSession (node_modules/selenium-webdriver/lib/webdriver.js:769:24)
+    at Function.createSession (node_modules/selenium-webdriver/chrome.js:761:15)
+    at createDriver (node_modules/selenium-webdriver/index.js:170:33)
+    at Builder.build (node_modules/selenium-webdriver/index.js:642:16)
+    at Context.<anonymous> (test/test.js:31:14)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
