@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Source : https://github.com/github/gitignore
 # Maven, Node, Python, Rails
 
@@ -225,3 +226,8 @@ pickle-email-*.html
 
 # Ignore node_modules
 node_modules/
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:08028cac3856f1814f46a0a845864c9e80838f3ad7f71b94e8121b7531b7ab4d
+size 3049
+>>>>>>> e019b00fd8779a5e115c3143379c4d14e2c143aa
