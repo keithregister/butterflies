@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import json 
 import flickrapi
 import requests
@@ -45,3 +46,8 @@ for i in range(50, 70):
         x = np.asarray(im)
         proper_im = resize(x)
         cv2.imwrite("monarchs/image{}.jpg".format(i*100+j), proper_im)
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:e84885ba144621f90117287cde78a8783d94aaeeda7e0c832215136d90647a99
+size 1651
+>>>>>>> 240a30ca4b5ce909491dca4d85929c22cc847be4
