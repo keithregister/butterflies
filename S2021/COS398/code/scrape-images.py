@@ -1,4 +1,4 @@
-import flickrapi
+limport flickrapi
 import json 
 import requests
 import matplotlib.pyplot as plt
@@ -33,17 +33,18 @@ api_key = u'e2687aab57bab0c1a5f39a811e15b36c'
 api_secret = u'1bee25dbc5f73387'
 
 flickr = flickrapi.FlickrAPI(api_key, api_secret, format='parsed-json')
-photos = flickr.photos.search(text = "monarch butterfly", sort = "relevance", per_page='100')
+photos = flickr.photos.search(text = "butterfly -monarch", sort = "relevance", per_page='100')
 
 
-for i in range(5):
-    photos = flickr.photos.search(text = "monarch butterfly", sort = "relevance", per_page='100', page = i)
+for i in range(19, 50):
+    print("Iteration: ", i)
+    photos = flickr.photos.search(text = "butterfly -monarch", sort = "relevance", per_page='100', page = i)
     for j, pic in enumerate(photos["photos"]["photo"]):
         url = "https://live.staticflickr.com/{}/{}_{}.jpg".format(pic["server"], pic["id"], pic["secret"])
         im = Image.open(requests.get(url, stream=True).raw)
         x = np.asarray(im)
         proper_im = resize(x)
-        cv2.imwrite("monarchs/image{}.jpg".format(i*100+j), proper_im)
+        cv2.imwrite("non-monarchs/image{}.jpg".format(i*100+j), proper_im)
 
 
 
