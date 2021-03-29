@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import json 
 import flickrapi
 import requests
@@ -37,17 +36,12 @@ flickr = flickrapi.FlickrAPI(api_key, api_secret, format='parsed-json')
 photos = flickr.photos.search(text = "butterfly -monarch", sort = "relevance", per_page='100')
 
 
-for i in range(50, 70):
-    print("Iteration: ", i)
-    photos = flickr.photos.search(text = "monarch butterfly", sort = "relevance", per_page='100', page = i)
+for i in range(70, 90):
+    print("Page: ", i)
+    photos = flickr.photos.search(text = "butterfly -monarch", sort = "relevance", per_page='100', page = i)
     for j, pic in enumerate(photos["photos"]["photo"]):
         url = "https://live.staticflickr.com/{}/{}_{}.jpg".format(pic["server"], pic["id"], pic["secret"])
         im = Image.open(requests.get(url, stream=True).raw)
         x = np.asarray(im)
         proper_im = resize(x)
-        cv2.imwrite("monarchs/image{}.jpg".format(i*100+j), proper_im)
-=======
-version https://git-lfs.github.com/spec/v1
-oid sha256:e84885ba144621f90117287cde78a8783d94aaeeda7e0c832215136d90647a99
-size 1651
->>>>>>> 240a30ca4b5ce909491dca4d85929c22cc847be4
+        cv2.imwrite("non-monarch-test/image{}.jpg".format(i*100+j), proper_im)
