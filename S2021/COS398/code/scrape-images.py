@@ -33,15 +33,38 @@ api_key = u'e2687aab57bab0c1a5f39a811e15b36c'
 api_secret = u'1bee25dbc5f73387'
 
 flickr = flickrapi.FlickrAPI(api_key, api_secret, format='parsed-json')
-photos = flickr.photos.search(text = "butterfly -monarch", sort = "relevance", per_page='100')
 
+counter = 0
+testCount = 0
+trainCount = 0
+valCount = 0
+for year in range(2010, 2021):
+    for pageNum in range(10):
+        print("Currently on year {} and page {}".format(year, pageNum))
+        photos = flickr.photos.search(text = "butterfly -monarch",
+        sort = "relevance",
+        per_page='100',
+        min_taken_date="{}-01-01 00:00:00".format(year),
+        max_taken_date="{}-01-01 00:00:00".format(year+1),
+        page = pageNum)
 
-for i in range(70, 90):
-    print("Page: ", i)
-    photos = flickr.photos.search(text = "butterfly -monarch", sort = "relevance", per_page='100', page = i)
-    for j, pic in enumerate(photos["photos"]["photo"]):
-        url = "https://live.staticflickr.com/{}/{}_{}.jpg".format(pic["server"], pic["id"], pic["secret"])
-        im = Image.open(requests.get(url, stream=True).raw)
-        x = np.asarray(im)
-        proper_im = resize(x)
-        cv2.imwrite("non-monarch-test/image{}.jpg".format(i*100+j), proper_im)
+        for pic in photos["photos"]["photo"]:
+            url = "https://live.staticflickr.com/{}/{}_{}.jpg".format(pic["server"], pic["id"], pic["secret"])
+            im = Image.open(requests.get(url, stream=True).raw)
+            x = np.asarray(im)
+            proper_im = resize(x)
+            #Save 1/10 of images for testing
+            if counter % 10 == 0:
+                cv2.imwrite("test/non-monarch/image{}.jpg".format(testCount), proper_im)
+                testCount += 1
+            #Save 2/10 images for validation
+            elif counter % 10 <= 2:
+                cv2.imwrite("val/non-monarch/image{}.jpg".format(valCount), proper_im)
+                valCount += 1
+            #Save 7/10 images for training
+            else:
+                cv2.imwrite("train/non-monarch/image{}.jpg".format(trainCount), proper_im)
+                trainCount += 1
+            
+            counter += 1
+                
